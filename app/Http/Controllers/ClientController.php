@@ -26,7 +26,10 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $clients = DB::table('clients')
+        ->orderBy('id')
+        ->get();
+        return view('Client.new', ['clients' => $clients]);
     }
 
     /**
@@ -37,7 +40,19 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new client();
+        $client -> id = $request -> id;
+        $client -> name = $request -> name;
+        $client -> lastname = $request -> lastname;
+        $client -> direction = $request -> direction;
+        $client -> birth_date = $request -> birth_date;
+        $client -> phone_number = $request -> phone_number;
+        $client -> email = $request -> email; 
+        $client -> save();
+
+        $clients = Client::all();
+        return view('Client.index', ['clients' => $clients]);
+
     }
 
     /**
@@ -59,7 +74,11 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::find($id);
+        $clients = db::table('clients')
+        ->orderBy('id')
+        ->get();
+        return view('Client.edit', ['categorie' => $client, 'clients' => $clients]);
     }
 
     /**
@@ -71,7 +90,21 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::find($id);
+        $client = new client();
+        $client -> id = $request -> id;
+        $client -> name = $request -> name;
+        $client -> lastname = $request -> lastname;
+        $client -> direction = $request -> direction;
+        $client -> birth_date = $request -> birth_date;
+        $client -> phone_number = $request -> phone_number;
+        $client -> email = $request -> email;
+
+        $client -> save();
+
+        $clients = Client::all();
+        return view('Client.index', ['clients' => $clients]);
+
     }
 
     /**
@@ -82,6 +115,10 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client -> delete();
+
+        $clients = Client::all();
+        return view('Client.index', ['clients' => $clients]);
     }
 }
