@@ -29,7 +29,7 @@
       <td>{{$pay_method -> name}}</td>
       <td>{{$pay_method -> other_details}}</td>
       <td>
-        <a href="{{route('paymethod.edit', ['paymethod' => $pay_method->id]) }}"
+        <a href="{{route('paymethod.edit', ['paymethod' => $pay_method->id])}}"
         class="btn btn-info"> Edit</a></li>
         <form action="{{route('paymethod.destroy', ['paymethod' => $pay_method->id])}}" method="POST" style="display: inline-block"> 
         @method('delete') 
