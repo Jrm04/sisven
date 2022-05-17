@@ -8,30 +8,30 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Categorie List</title>
+    <title>Pay Methods List</title>
   </head>
   <body>
     <div class="container">
-  <h1>Categories List</h1>
-  <a href="{{route('categories.create')}}" class="btn btn-success">Add</a>
+  <h1>Pay Methods List</h1>
+  <a href="{{route('paymethod.create')}}" class="btn btn-success">Add</a>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">id</th>
       <th scope="col">Name</th>
-      <th scope="col">Description</th>
+      <th scope="col">Other Details</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($categories as $categorie)
+    @foreach($pay_methods as $pay_method)
     <tr>
-      <th scope="row">{{$categorie -> id}}</th>
-      <td>{{$categorie -> name}}</td>
-      <td>{{$categorie -> description}}</td>
+      <th scope="row">{{$pay_method -> id}}</th>
+      <td>{{$pay_method -> name}}</td>
+      <td>{{$pay_method -> other_details}}</td>
       <td>
-        <a href="{{route('categories.edit', ['category' => $categorie->id]) }}"
+        <a href="{{route('paymethod.edit', ['paymethod' => $pay_method->id]) }}"
         class="btn btn-info"> Edit</a></li>
-        <form action="{{route('categories.destroy', ['category' => $categorie->id])}}" method="POST" style="display: inline-block"> 
+        <form action="{{route('paymethod.destroy', ['paymethod' => $pay_method->id])}}" method="POST" style="display: inline-block"> 
         @method('delete') 
         @csrf
         <input class="btn btn-danger" type="submit" value="Detele">

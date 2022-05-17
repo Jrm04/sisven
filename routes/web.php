@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Pay_methodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::get('/', function () {
 route::resource('categories', CategorieController::class);
 
 route::resource('client', ClientController::class);
+
+route::resource('paymethod', Pay_methodController::class);

@@ -8,31 +8,32 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>CREATE CATEGORIE</title>
+    <title>EDIT Pay Method</title>
   </head>
   <body>
       <div class="container">
-          <h1>CREATE CATEGORIE</h1>
-          <form method="POST" action="{{route('categories.store')}}">
+          <h1>EDIT Pay Method</h1>
+          <form method="POST" action="{{route('paymethod.update', ['paymethod' => $pay_method ->id])}}">
+              @method('put')
               @csrf
               <div class="mb-3">
                   <label for="id" class="form-label">ID</label>
                   <input type="text" class="form-control" name="id" id="id" aria-describedby="idHelp">
-                  <div id="idHelp" class="form-text">Categorie Id</div>
+                  <div id="idHelp" class="form-text">Pay Method Id</div>
               </div>
               <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
                   <input type="text" class="form-control" id="name" aria-describedby="nameHelp" name="name">
-                  <div id="nameHelp" class="form-text">Categorie Name</div>
+                  <div id="nameHelp" class="form-text">Pay Method Name</div>
               </div>
               <div class="mb-3">
-                  <label for="description" class="form-label">Descrption</label>
-                  <input type="text" class="form-control" name="description" id="description" aria-describedby="descriptionHelp">
-                  <div id="descriptionHelp" class="form-text">Categorie Descrption</div>
+                  <label for="description" class="form-label">Others Details</label>
+                  <input type="text" class="form-control" name="other_details" id="other_details" aria-describedby="other_detailsHelp">
+                  <div id="other_detailsHelp" class="form-text">Other Details Descrption</div>
               </div>
               <div class="mb-3">
                   <button type="submit" class="btn btn-primary">Save</button>
-                  <a href="{{ route('categories.index')}}" class="btn btn-warning">Cancel</a>
+                  <a href="{{ route('paymethod.index')}}" class="btn btn-warning">Cancel</a>
               </div>
           </form>
 

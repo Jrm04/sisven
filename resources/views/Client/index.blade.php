@@ -41,7 +41,7 @@
         <a href="{{route('client.edit', ['client' => $client->id]) }}"
         class="btn btn-info"> Edit</a></li>
         <form action="{{route('client.destroy', ['client' => $client->id])}}" method="POST" style="display: inline-block"> 
-        @method('detele') 
+        @method('delete') 
         @csrf
         <input class="btn btn-danger" type="submit" value="Detele">
 
