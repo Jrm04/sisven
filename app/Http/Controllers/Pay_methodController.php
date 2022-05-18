@@ -16,7 +16,7 @@ class Pay_methodController extends Controller
     public function index()
     {
         $pay_methods = Pay_method::all();
-        return view('paymethod.index', ['pay_methods' => $pay_methods]);
+        return view("paymethod.index", ["pay_methods" => $pay_methods]);
     }
 
     /**
@@ -47,7 +47,7 @@ class Pay_methodController extends Controller
         $pay_method -> save();
 
         $pay_methods = Pay_method::all();
-        return view("paymethod.index", ['pay_methods' => $pay_methods]);
+        return view('paymethod.index', ['pay_methods' => $pay_methods]);
 
     }
 
@@ -94,7 +94,7 @@ class Pay_methodController extends Controller
         $pay_method -> save();
 
         $pay_methods = Pay_method::all();
-        return view("paymethod.index", ['pay_methods' => $pay_methods]);
+        return view('paymethod.index', ['pay_methods' => $pay_methods]);
     }
 
     /**
@@ -109,6 +109,6 @@ class Pay_methodController extends Controller
         $pay_method -> delete();
 
         $pay_methods = Pay_method::all();
-        return view('paymethod.index', ['paymethods' => $pay_methods]);
+        return view("paymethod.index", ["paymethods" => $pay_methods]);
     }
 }

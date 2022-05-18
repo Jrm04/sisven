@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('invoces', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('clients_id');
             $table->unsignedBigInteger('num_pago');
             $table->text('other_details');
-            $table -> foreign('client_id')->references('id')->on('clients');
+            $table -> foreign('clients_id')->references('id')->on('clients');
             $table -> foreign('num_pago')->references('id')->on('pay_methods');
             $table->timestamps();
         });
