@@ -37,7 +37,7 @@
               </div>
 
               <div class="mb-3">
-              <select name="from-select" aria-label="Default select example" name="id_categories" id="">
+              <select class="from-select" aria-label="Default select example" name="id_categories" id="">
                   <option selected disabled value="">Select ...</option>
                   @foreach($categories as $categorie)
                   <option value="{{ $categorie -> id}}">{{ $categorie -> name}}</option>
