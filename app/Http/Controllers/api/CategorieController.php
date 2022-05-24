@@ -28,7 +28,13 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorie = new Categorie();
+        $categorie->id = $request->id;
+        $categorie->name = $request->name;
+        $categorie->description = $request->description;
+        $categorie->save();
+        return json_encode(['categorie' => $categorie]);
+
     }
 
     /**
@@ -39,7 +45,12 @@ class CategorieController extends Controller
      */
     public function show($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categories = db::table('categories')
+        ->orderBy('id')
+        ->get();
+
+        return json_encode(['categorie' => $categorie, 'categories' => $categories]);
     }
 
     /**
@@ -51,7 +62,13 @@ class CategorieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categorie->id = $request->id;
+        $categorie->name = $request->name;
+        $categorie->description = $request->description;
+        $categorie->save();
+
+        return json_encode(['categorie' => $categorie]);
     }
 
     /**
@@ -62,6 +79,12 @@ class CategorieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categorie->delete();
+
+        $categories = Categorie::all();
+        return json_encode(['categories' => $categories, 'success' => true]);
+
+
     }
 }
