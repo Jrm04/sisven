@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\CategorieController;
+use App\Http\Controllers\api\ClientController;
 use App\Models\Categorie;
 
 /*
@@ -25,3 +26,6 @@ route::post('/categories', [CategorieController::class, 'store'])->name('categor
 route::delete('/categories/{category}', [CategorieController::class, 'destroy'])->name('categories.destroy');
 route::get('/categories/{category}', [CategorieController::class, 'show'])->name('categories.show');
 route::put('/categories/{category}', [CategorieController::class, 'update'])->name('categories.update');
+
+
+route::get('/client', [ClientController::class, 'index'])->name('client');
