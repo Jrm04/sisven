@@ -6,6 +6,7 @@ use App\Http\Controllers\api\CategorieController;
 use App\Http\Controllers\api\ClientController;
 use App\Http\Controllers\api\Pay_methodController;
 use App\Http\Controllers\api\ProductController;
+use App\Models\Pay_method;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,10 @@ route::post('/products', [ProductController::class, 'store'])->name('products');
 route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+
+route::get('/paymethod', [Pay_methodController::class, 'index'])->name('paymethod');
+route::post('/paymethod', [Pay_methodController::class, 'store'])->name('paymethod');
+route::delete('/paymethod/{paymethod}', [Pay_methodController::class, 'destroy'])->name('paymethod');
+route::get('/paymethod/{paymethod}', [Pay_methodController::class, 'show'])->name('paymethod');
+route::put('/paymethod/{paymethod}', [Pay_methodController::class, 'update'])->name('paymethod');
