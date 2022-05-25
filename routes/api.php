@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\api\CategorieController;
 use App\Http\Controllers\api\ClientController;
-use App\Models\Categorie;
+use App\Http\Controllers\api\Pay_methodController;
+use App\Http\Controllers\api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,14 @@ route::put('/categories/{category}', [CategorieController::class, 'update'])->na
 
 
 route::get('/client', [ClientController::class, 'index'])->name('client');
+route::post('/client', [ClientController::class, 'store'])->name('client.store');
+route::delete('/client/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
+route::get('/client/{client}', [ClientController::class, 'show'])->name('client.show');
+route::put('/client/{client}', [ClientController::class, 'update'])->name('client.update');
+
+
+route::get('/products', [ProductController::class, 'index'])->name('products');
+route::post('/products', [ProductController::class, 'store'])->name('products');
+route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');

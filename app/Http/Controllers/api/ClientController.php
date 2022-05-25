@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -17,7 +18,6 @@ class ClientController extends Controller
     {
         $clients = Client::all();
         return json_encode(["clients" => $clients]);
-
     }
 
     /**
@@ -28,7 +28,17 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new client();
+        $client -> id = $request -> id;
+        $client -> name = $request -> name;
+        $client -> lastname = $request -> lastname;
+        $client -> direction = $request -> direction;
+        $client -> birth_date = $request -> birth_date;
+        $client -> phone_number = $request -> phone_number;
+        $client -> email = $request -> email; 
+        $client -> save();
+
+        return json_encode(['client' => $client]);
     }
 
     /**
@@ -39,7 +49,13 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Client::find($id);
+        $clients = db::table('clients')
+        ->orderBy('id')
+        ->get();
+
+        return json_encode(['client' => $client, 'clients' => $clients]);
+
     }
 
     /**
@@ -51,7 +67,17 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::find($id);
+        $client -> id = $request -> id;
+        $client -> name = $request -> name;
+        $client -> lastname = $request -> lastname;
+        $client -> direction = $request -> direction;
+        $client -> birth_date = $request -> birth_date;
+        $client -> phone_number = $request -> phone_number;
+        $client -> email = $request -> email;
+        $client ->save();
+
+        return json_encode(['client' => $client]);
     }
 
     /**
@@ -62,6 +88,10 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::find($id);
+        $client -> delete();
+
+        $clients = Client::all();
+        return json_encode(['clients' => $clients, 'success' => true]);
     }
 }
