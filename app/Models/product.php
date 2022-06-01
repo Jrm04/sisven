@@ -11,5 +11,5 @@ class product extends Model
     protected $table = 'products';
     protected $primarykey = 'id';
     protected $foreign = 'id_categories';
-    public $timetamps = false;
+    //public $timetamps = false;*
 }

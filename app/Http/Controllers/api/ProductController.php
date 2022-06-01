@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $products = db::table('products')
         ->join('categories', 'products.id_categories', '=', 'categories.id')
-        ->select('products.*', "categories.id")
+        ->select('products.*', "categories.name")
         ->get();
         
         //$products = product::all();
@@ -34,15 +34,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new product();
-        $product->id = $request->id;
+        //$product->id = $request->id;
         $product->name = $request->name;
-        $product->price = $request-> price;
-        $product->stock = $request-> stock;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
         $product->id_categories = $request-> id_categories;
         $product->save();
 
-        return json_encode(['product' => $product]);
-    }
+        return json_encode(['product' => $product]); }
 
     /**
      * Display the specified resource.
@@ -54,7 +53,7 @@ class ProductController extends Controller
     {
         $product = product::find($id);
         $categories = db::table('categories')
-        ->orderBy('id')
+        ->orderBy('name')
         ->get();
 
         return json_encode(['product' => $product, 'categories' => $categories]);
@@ -71,7 +70,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = product::find($id);
-        $product->id = $request->id;
+        //$product->id = $request->id;
         $product->name = $request->name;
         $product->price = $request-> price;
         $product->stock = $request-> stock;
