@@ -15,12 +15,12 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = db::table('products')
+        /*$products = db::table('products')
         ->join('categories', 'products.id_categories', '=', 'categories.id')
         ->select('products.*', "categories.name")
         ->get();
-        
-        //$products = product::all();
+        */
+        $products = product::all();
         return json_encode(['products' => $products]);
         
     }
@@ -41,7 +41,8 @@ class ProductController extends Controller
         $product->id_categories = $request-> id_categories;
         $product->save();
 
-        return json_encode(['product' => $product]); }
+        return json_encode(['product' => $product]); 
+    }
 
     /**
      * Display the specified resource.
@@ -53,7 +54,7 @@ class ProductController extends Controller
     {
         $product = product::find($id);
         $categories = db::table('categories')
-        ->orderBy('name')
+        ->orderBy('categories.name')
         ->get();
 
         return json_encode(['product' => $product, 'categories' => $categories]);
@@ -92,7 +93,7 @@ class ProductController extends Controller
         $product->delete();
         $products = db::table('products')
         ->join('categories', 'products.id_categories', '=', 'categories.id')
-        ->select('products.*', "categories.id")
+        ->select('products.*', "products.id")
         ->get();
 
         return json_encode(['products' => $products, 'success' => true]);

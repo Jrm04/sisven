@@ -38,14 +38,14 @@ route::put('/client/{client}', [ClientController::class, 'update'])->name('clien
 
 
 route::get('/products', [ProductController::class, 'index'])->name('products');
-route::post('/products', [ProductController::class, 'store'])->name('products');
+route::post('/products', [ProductController::class, 'store'])->name('products.store');
 route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 
 route::get('/paymethod', [Pay_methodController::class, 'index'])->name('paymethod');
-route::post('/paymethod', [Pay_methodController::class, 'store'])->name('paymethod');
-route::delete('/paymethod/{paymethod}', [Pay_methodController::class, 'destroy'])->name('paymethod');
-route::get('/paymethod/{paymethod}', [Pay_methodController::class, 'show'])->name('paymethod');
-route::put('/paymethod/{paymethod}', [Pay_methodController::class, 'update'])->name('paymethod');
+route::post('/paymethod', [Pay_methodController::class, 'store'])->name('paymethod.store');
+route::delete('/paymethod/{paymethod}', [Pay_methodController::class, 'destroy'])->name('paymethod.destroy');
+route::get('/paymethod/{paymethod}', [Pay_methodController::class, 'show'])->name('paymethod.show');
+route::put('/paymethod/{paymethod}', [Pay_methodController::class, 'update'])->name('paymethod.update');
